@@ -25,8 +25,9 @@ namespace skyline::kernel::type {
 
     KSharedMemory::~KSharedMemory() {
         if (state.process && guest.valid()) {
-            if (mmap(guest.data(), guest.size(), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_FIXED | MAP_ANONYMOUS, -1, 0) == MAP_FAILED) [[unlikely]]
-                Logger::Warn("An error occurred while unmapping shared memory: {}", strerror(errno));
+            auto hostMap{state.process->memory.GetHostSpan(guest)};
+            if (mmap(hostMap.data(), hostMap.size(), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_FIXED | MAP_ANONYMOUS, -1, 0) == MAP_FAILED) [[unlikely]]
+                LOGW("An error occurred while unmapping shared memory: {}", strerror(errno));
 
             state.process->memory.UnmapMemory(guest);
         }

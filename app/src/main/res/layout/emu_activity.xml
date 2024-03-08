@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <emu.skyline.views.FixedRatioSurfaceView
+        <org.stratoemu.strato.views.FixedRatioSurfaceView
             android:id="@+id/game_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="bottom">
 
-        <emu.skyline.input.onscreen.OnScreenControllerView
+        <org.stratoemu.strato.input.onscreen.OnScreenControllerView
             android:id="@+id/on_screen_controller_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -40,7 +40,7 @@
             android:layout_marginLeft="@dimen/onScreenItemHorizontalMargin"
             android:layout_marginTop="5dp"
             android:textColor="@color/colorPerfStatsPrimary"
-            tools:text="60 FPS\n16.6±0.10ms" />
+            tools:text="60 FPS • 2000 MB" />
 
         <ImageButton
             android:id="@+id/on_screen_pause_toggle"
@@ -70,5 +70,6 @@
             android:id="@+id/emulation_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </FrameLayout>
 </FrameLayout>
